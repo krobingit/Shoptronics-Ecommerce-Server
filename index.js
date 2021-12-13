@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { usersRoute } from './routes/users.js';
+import { userauthRoute } from './routes/userauth.js';
 import { mongo } from './mongo/mongo.js';
 import { resetRoute } from './routes/resetPassword.js';
 dotenv.config();
