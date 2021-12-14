@@ -21,8 +21,7 @@ const helper = {
 //creating a token for successful login
       const token = jwt.sign({
         userid: userDB._id,
-        username: user.username,
-        isAdmin:user.isAdmin
+        username: userDB.isAdmin
          }, process.env.SECRET_KEY, { expiresIn: '1d' })
   //sending token
       let { password, ...details } = userDB;
