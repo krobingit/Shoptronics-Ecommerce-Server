@@ -16,7 +16,6 @@ const helper = {
 
 
     const isPasswordMatch = await bcrypt.compare(password, userDB.password);
-    const { password, ...details } = user;
     if (isPasswordMatch)
     {
 //creating a token for successful login
@@ -26,6 +25,7 @@ const helper = {
         isAdmin:user.isAdmin
          }, process.env.SECRET_KEY, { expiresIn: '1d' })
   //sending token
+      let { password, ...details } = userDB;
        res.status(200).send({...details,token })
     }
     else
