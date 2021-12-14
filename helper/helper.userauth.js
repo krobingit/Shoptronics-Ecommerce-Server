@@ -16,12 +16,17 @@ const helper = {
 
 
     const isPasswordMatch = await bcrypt.compare(password, userDB.password);
+    const { password, ...details } = user;
     if (isPasswordMatch)
     {
 //creating a token for successful login
-      const token = jwt.sign({ "id": userDB._id }, process.env.SECRET_KEY, { expiresIn: '1h' })
+      const token = jwt.sign({
+        userid: userDB._id,
+        username: user.username,
+        isAdmin:user.isAdmin
+         }, process.env.SECRET_KEY, { expiresIn: '1d' })
   //sending token
-       res.status(200).send({ message: "Login Completed Successfully",token:token })
+       res.status(200).send({...details,token })
     }
     else
       return res.status(401).send({ message: "Invalid Credentials" });

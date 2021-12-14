@@ -52,7 +52,7 @@ export const helper = {
     if (isTokenValid && isntExpired) {
       const { password } = req.body;
       const hashedNewPassword = await bcrypt.hash(password, Number(10))
-      //deleting the token and expiry time after updating password
+      //deleting the reset token and expiry time after updating password
       const updatePasswordDB = await mongo.users.
         findOneAndUpdate({ _id: ObjectId(userid) }, {
           $set: { password: hashedNewPassword }, $unset: {

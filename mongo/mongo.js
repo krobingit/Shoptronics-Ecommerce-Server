@@ -14,7 +14,11 @@ async connectDB()
  await client.connect();
  console.log("MongoDB Connected");
  this.db = client.db('Ecommerce');
- this.users = this.db.collection('users');
+  this.users = this.db.collection('users');
+  this.products = this.db.collection('products');
+  this.orders = this.db.collection('orders');
+  this.cart = this.db.collection('cart');
+  this.wishlist = this.db.collection('wishlist');
 }
 }
 export {mongo};
