@@ -41,6 +41,7 @@ const helper = {
       if (error)
         return res.status(400).send({ value: value, Error: error.details[0].message });
 
+      const { isAdmin } = value;
       const usernameDB = await mongo.users.findOne({ username: username });
       const useremailDB = await mongo.users.findOne({ email: email });
       //checking if username or useremail exists in db
@@ -48,7 +49,7 @@ const helper = {
         return res.status(400).send({ Error: "Username/Email already exists" });
       const salt = await bcrypt.genSalt(10);
       password = await bcrypt.hash(password, salt);
-      const createUser = await mongo.users.insertOne({ username, email, password,createdAt });
+      const createUser = await mongo.users.insertOne({ username, email, password,createdAt,isAdmin });
       console.log(createUser)
       res.status(201).send({"confirmation":"User Registration Successful"});
     }
