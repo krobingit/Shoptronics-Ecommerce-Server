@@ -6,6 +6,7 @@ dotenv.config();
 const mongo={
  db: null,
   users: null,
+  products:null,
   orders: null,
   cart: null,
  wishlist:null,
