@@ -6,4 +6,8 @@ router
  .route("/")
  .get(helper.getAllProducts)
 
+router
+ .route("/:id")
+ .get(helper.getProduct)
+
 export const productRoute = router;
