@@ -8,6 +8,6 @@ router
 
 router
  .route("/:id")
- .get(helper.getProduct)
+ .get(helper.getProductById)
 
 export const productRoute = router;

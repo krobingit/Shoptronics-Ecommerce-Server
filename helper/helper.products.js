@@ -7,7 +7,7 @@ const helper = {
     const prods = await mongo.products.find(filter).toArray();
     res.send(prods);
   },
-  async getProduct(req, res) {
+  async getProductById(req, res) {
     try {
       const { id } = req.params;
       const product = await mongo.products.findOne({ _id: ObjectId(id) })
