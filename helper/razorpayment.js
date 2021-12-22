@@ -13,7 +13,7 @@ export const razorpay = async (req, res) => {
    currency: "INR",
    receipt: shortid.generate(),
   })
-  res.send({message:"OK",response})
+  res.send(response)
  }
   catch(err)
   {
