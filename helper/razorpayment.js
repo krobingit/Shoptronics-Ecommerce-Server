@@ -9,7 +9,7 @@ export const razorpay = async (req, res) => {
   const { total } = req.body;
  try {
   const response=await razpay.orders.create({
-   amount:total,
+   amount:total*100,
    currency: "INR",
    receipt: shortid.generate(),
   })
