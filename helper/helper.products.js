@@ -1,12 +1,14 @@
 import { mongo } from "../mongo/mongo.js";
 import {ObjectId} from 'mongodb'
-//getData
+
 const helper = {
+//getting all products
   async getAllProducts(req, res) {
     const filter = req.query;
     const prods = await mongo.products.find(filter).toArray();
     res.send(prods);
   },
+  //getting a specificc product
   async getProductById(req, res) {
     try {
       const { id } = req.params;
