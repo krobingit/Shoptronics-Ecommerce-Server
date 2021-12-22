@@ -6,10 +6,10 @@ var razpay = new Razorpay({
   key_secret: '0OdSUw2C0dLoocSqjrFbKZE9',
 });
 export const razorpay = async (req, res) => {
-
+  const { amount } = req.body;
  try {
   const response=await razpay.orders.create({
-   amount:"5000",
+   amount,
    currency: "INR",
    receipt: shortid.generate(),
   })
