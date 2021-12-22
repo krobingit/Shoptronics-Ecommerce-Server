@@ -1,9 +1,10 @@
 import Razorpay from 'razorpay';
 import shortid from 'shortid';
+import env from 'dotenv';
 
 var razpay = new Razorpay({
-  key_id: 'rzp_test_2I9iqbhqh8BDIH',
-  key_secret: '0OdSUw2C0dLoocSqjrFbKZE9',
+  key_id: process.env.RAZORPAY_ID,
+  key_secret: process.env.RAZORPAY_SECRET,
 });
 export const razorpay = async (req, res) => {
   const { total } = req.body;
