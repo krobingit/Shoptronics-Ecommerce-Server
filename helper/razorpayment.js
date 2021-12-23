@@ -67,7 +67,7 @@ export const verification =  (req, res) => {
             message: "Something error!s"
           })
         }
-        return res.status(200).json(response,body)
+        return res.status(200).json(response)
       }
     )
   }
