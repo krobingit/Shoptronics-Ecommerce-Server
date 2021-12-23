@@ -1,6 +1,5 @@
 import express from "express";
-import { verification } from "../helper/paymentverify.js";
-import { razorpay } from "../helper/razorpayment.js";
+import { razorpay,verification } from "../helper/razorpayment.js";
 const router = express.Router();
 
 router
