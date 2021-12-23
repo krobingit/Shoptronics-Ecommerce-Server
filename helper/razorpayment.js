@@ -1,13 +1,15 @@
 import Razorpay from 'razorpay';
 import shortid from 'shortid';
-import crypto from 'crypto';
+import request from 'request';
 
 var razpay = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
   key_secret: process.env.RAZORPAY_SECRET,
 });
+
 export const razorpay = async (req, res) => {
   const { total } = req.body;
+
  try {
   const response=await razpay.orders.create({
    amount:total*100,
@@ -29,6 +31,7 @@ export const verification =  (req, res) => {
     .then((pay) => { console.log(pay) })
 */
 // do a validation
+  /*
   const secret = 'leomessi';
 
 	console.log(req.body)
@@ -47,5 +50,30 @@ export const verification =  (req, res) => {
 		// pass it
 	}
 	res.json({ status: 'ok' })
-
+*/
+ try{
+    return request(
+      {
+        method : "POST",
+        url : `https://${razpay.key_id}:${razpay.key_secret}@api.razorpay.com/v1/payments/${req.params.paymentId}/capture`,
+        form:{
+          amount : 10 *100,
+          currency: "INR"
+        },
+      },
+      async function(err,response,body){
+        if(err){
+          return res.status(500).json({
+            message: "Something error!s"
+          })
+        }
+        return res.status(200).json(body)
+      }
+    )
+  }
+  catch(err){
+    return res.status(500).json({
+      message: err.message
+    })
+  }
 }
