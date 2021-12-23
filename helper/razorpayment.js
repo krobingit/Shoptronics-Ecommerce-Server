@@ -24,7 +24,7 @@ console.log(err)
 }
 export const verification = async (req, res) => {
   console.log(req.body)
-  razpay.payments.fetch(req.body.razorpay_payment_id).then((pay) => {
+  await razpay.payments.fetch(req.body.razorpay_payment_id).then((pay) => {
     if (pay.status === "captured") {
       console.log(pay)
       res.send({
