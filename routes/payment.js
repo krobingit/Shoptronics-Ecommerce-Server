@@ -7,7 +7,7 @@ router
  .post(razorpay)
 
 router
- .route("/verification")
+ .route("/capture/:paymentId")
  .post(verification)
 
 export const paymentRoute = router;
