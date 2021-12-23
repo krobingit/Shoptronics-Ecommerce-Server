@@ -55,7 +55,7 @@ export const verification =  (req, res) => {
     return request(
       {
         method : "POST",
-        url : `https://${razpay.key_id}:${razpay.key_secret}@api.razorpay.com/v1/payments/${req.params.paymentId}/`,
+        url : `https://${razpay.key_id}:${razpay.key_secret}@api.razorpay.com/v1/payments/${req.params.paymentId}`,
         form:{
           amount : req.body.amount,
           currency: req.body.currency
