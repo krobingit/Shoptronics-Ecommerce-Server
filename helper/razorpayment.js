@@ -1,7 +1,6 @@
 import Razorpay from 'razorpay';
 import shortid from 'shortid';
 import request from 'request';
-import axios from 'axios';
 
 var razpay = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
@@ -29,7 +28,7 @@ console.log(err)
 }
 export const verification =  (req, res) => {
   try {
-   /*
+
     return request(
       {
         method : "POST",
@@ -47,13 +46,8 @@ export const verification =  (req, res) => {
         }
         return res.status(200).json(body)
       }
-    )*/
-   const data = axios.post(`https://${razpay.key_id}:${razpay.key_secret}@api.razorpay.com/v1/payments/${req.params.paymentId}/capture`,
-         {
-          amount : req.body.amount,
-          currency: req.body.currency
-     })
-   res.send(data);
+    )
+
   }
   catch(err){
     return res.status(500).json({
