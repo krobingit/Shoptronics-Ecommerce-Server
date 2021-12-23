@@ -15,6 +15,7 @@ export const razorpay = async (req, res) => {
    amount:total*100,
    currency: "INR",
    receipt: shortid.generate(),
+ payment_capture: 0
   })
   res.send(response)
  }
