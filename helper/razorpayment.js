@@ -37,7 +37,7 @@ export const verification = async (req, res) => {
   }
 )
 
-  res.send({status:"ok"})
+
 
 }
 
