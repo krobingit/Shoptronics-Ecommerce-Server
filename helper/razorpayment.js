@@ -1,5 +1,6 @@
 import Razorpay from 'razorpay';
 import shortid from 'shortid';
+import crypto from 'crypto';
 
 var razpay = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
@@ -31,8 +32,6 @@ export const verification =  (req, res) => {
   const secret = 'leomessi';
 
 	console.log(req.body)
-
-	const crypto = require('crypto')
 
 	const shasum = crypto.createHmac('sha256', secret)
 	shasum.update(JSON.stringify(req.body))
