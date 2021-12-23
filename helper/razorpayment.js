@@ -1,6 +1,5 @@
 import Razorpay from 'razorpay';
 import shortid from 'shortid';
-import env from 'dotenv';
 
 var razpay = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
