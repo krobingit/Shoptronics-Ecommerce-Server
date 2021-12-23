@@ -1,6 +1,7 @@
 import Razorpay from 'razorpay';
 import shortid from 'shortid';
 import request from 'request';
+import axios from 'axios';
 
 var razpay = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
@@ -27,32 +28,7 @@ console.log(err)
 
 }
 export const verification =  (req, res) => {
-
-  /* razpay.payments.fetch(req.body.razorpay_payment_id)
-    .then((pay) => { console.log(pay) })
-*/
-// do a validation
-  /*
-  const secret = 'leomessi';
-
-	console.log(req.body)
-
-	const shasum = crypto.createHmac('sha256', secret)
-	shasum.update(JSON.stringify(req.body))
-	const digest = shasum.digest('hex')
-
-	console.log(digest, req.headers['x-razorpay-signature'])
-
-	if (digest === req.headers['x-razorpay-signature']) {
-		console.log('request is legit')
-		// process it
-		require('fs').writeFileSync('payment1.json', JSON.stringify(req.body, null, 4))
-	} else {
-		// pass it
-	}
-	res.json({ status: 'ok' })
-*/
- try{
+ try{/*
     return request(
       {
         method : "POST",
@@ -65,12 +41,18 @@ export const verification =  (req, res) => {
       async function(err,response,body){
         if(err){
           return res.status(500).json({
-            message: "Something error!s"
+            message: "Something went wrong!"
           })
         }
         return res.status(200).json(body)
       }
-    )
+    )*/
+   const data = axios.post(`https://${razpay.key_id}:${razpay.key_secret}@api.razorpay.com/v1/payments/${req.params.paymentId}/capture`,
+         {
+          amount : req.body.amount,
+          currency: req.body.currency
+     })
+   res.send(data);
   }
   catch(err){
     return res.status(500).json({
