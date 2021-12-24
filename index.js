@@ -7,6 +7,7 @@ import { resetRoute } from "./routes/resetPassword.js";
 import { productRoute } from "./routes/product.js";
 import { paymentRoute } from "./routes/payment.js";
 import { ordersRoute } from "./routes/orders.js";
+import { usersRoute } from "./routes/users.js";
 dotenv.config();
 
 const app = express();
@@ -21,7 +22,8 @@ app.use("/userauth", userauthRoute);
 app.use("/resetPassword", resetRoute);
 app.use("/product", productRoute);
 app.use("/razorpay", paymentRoute);
-app.use("/order",ordersRoute)
+app.use("/order", ordersRoute);
+app.use("/user", usersRoute);
 app.listen(PORT, () =>
   console.log(`server running successfully on PORT ${PORT}`)
 );

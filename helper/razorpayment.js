@@ -1,7 +1,7 @@
 import Razorpay from 'razorpay';
 import shortid from 'shortid';
 import request from 'request';
-import { mongo } from '../mongo/mongo.js';
+
 
 var razpay = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
@@ -45,7 +45,7 @@ export const verification =  (req, res) => {
             message: "Something went wrong!"
           })
         }
-       // await mongo.orders.insertOne()
+
         return res.status(200).json(body)
       }
     )
