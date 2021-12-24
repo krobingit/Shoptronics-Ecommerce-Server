@@ -6,6 +6,7 @@ import { mongo } from "./mongo/mongo.js";
 import { resetRoute } from "./routes/resetPassword.js";
 import { productRoute } from "./routes/product.js";
 import { paymentRoute } from "./routes/payment.js";
+import { ordersRoute } from "./routes/orders.js";
 dotenv.config();
 
 const app = express();
@@ -19,7 +20,8 @@ app.use(express.json());
 app.use("/userauth", userauthRoute);
 app.use("/resetPassword", resetRoute);
 app.use("/product", productRoute);
-app.use("/razorpay",paymentRoute)
+app.use("/razorpay", paymentRoute);
+app.use("/order",ordersRoute)
 app.listen(PORT, () =>
   console.log(`server running successfully on PORT ${PORT}`)
 );
