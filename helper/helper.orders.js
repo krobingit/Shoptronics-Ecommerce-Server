@@ -18,7 +18,7 @@ const helper={
  async getOrder(req, res) {
   try {
 
-   const order = await mongo.orders.find({ userId: req.params.userid }).sort({createdAt:1}).toArray();
+   const order = await mongo.orders.find({ userId: req.params.userid }).sort({createdAt:-1}).toArray();
    res.status(200).send(order)
   }
   catch (err)
