@@ -17,7 +17,7 @@ export const helper = {
   charset: 'alphanumeric'
 })
 
-    //creating expiry after 1 hour
+    //creating token expiry after 1 hour
     let expiry = new Date(Date.now()+3600*1000)
     //updating users collection with resetToken and resetExpiry Time
     const resetUpdateDB = await mongo.users.findOneAndUpdate({ email: email }, {
@@ -28,7 +28,7 @@ export const helper = {
     }, { returnNewDocument: true })
 
 
-    let link = `https://shoptronics-ecommerce.netlify.app/resetPassword/${userDB._id}/${token}`;
+    let link = `https://shoptronics-ecom.netlify.app/resetPassword/${userDB._id}/${token}`;
 
     await sendMail(userDB.email, "Password Reset", `${link}`);
     res.status(200).send({
