@@ -34,8 +34,9 @@ const helper = {
  async EditProductById(req, res) {
     try {
       const { id } = req.params;
-       const updatedData=await mongo.products.findOneAndUpdate({ _id: ObjectId(id) }, { $set: req.body }, { returnNewDocument: true })
-      res.status(200).send(updatedData);
+       const res=await mongo.products.findOneAndUpdate({ _id: ObjectId(id) }, { $set: req.body }, { returnNewDocument: true })
+      const updatedData = await this.getProductById();
+res.status(200).send(updatedData);
     }
     catch (err)
     {
