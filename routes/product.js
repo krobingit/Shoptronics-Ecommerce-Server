@@ -12,5 +12,6 @@ router
 router
  .route("/:id")
  .get(helper.getProductById)
+ .put(AuthorizeAdmin,helper.EditProductById)
  .delete(AuthorizeAdmin, helper.deleteProductById);
 export const productRoute = router;

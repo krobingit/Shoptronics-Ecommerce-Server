@@ -31,5 +31,17 @@ const helper = {
       console.log("Error in deleting Product"+err);
     }
   },
+ async EditProductById(req, res) {
+    try {
+      const { id } = req.params;
+      const result = await mongo.products.findOneAndUpdate({ _id: ObjectId(id) }, { $set: req.body }, { returnNewDocument: true })
+      const updatedData = await this.getProductById();
+      res.status(200).send(updatedData);
+    }
+    catch (err)
+    {
+      console.log("Error in updating Product"+err);
+    }
+  },
 };
 export {helper}
