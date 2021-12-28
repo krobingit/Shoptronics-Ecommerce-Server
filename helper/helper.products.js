@@ -20,5 +20,16 @@ const helper = {
       console.log("Error:"+err);
     }
   },
+ async deleteProductById(req, res) {
+    try {
+      const { id } = req.params;
+      const result = await mongo.products.deleteOne({ _id: ObjectId(id) })
+     result.deletedCount > 0 ? res.send(result) : res.send({ message: "No user Found" });
+    }
+    catch (err)
+    {
+      console.log("Error in deleting Product"+err);
+    }
+  },
 };
 export {helper}

@@ -8,8 +8,6 @@ const mongo={
   users: null,
   products:null,
   orders: null,
-  cart: null,
- wishlist:null,
 async connectDB()
 {
  await client.connect();
@@ -18,8 +16,6 @@ async connectDB()
   this.users = this.db.collection('users');
   this.products = this.db.collection('products');
   this.orders = this.db.collection('orders');
-  this.cart = this.db.collection('cart');
-  this.wishlist = this.db.collection('wishlist');
 }
 }
 export {mongo};
