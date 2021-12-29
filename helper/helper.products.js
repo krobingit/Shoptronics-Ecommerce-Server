@@ -1,5 +1,5 @@
 import { mongo } from "../mongo/mongo.js";
-import {ObjectId} from 'mongodb'
+import { ObjectId } from 'mongodb';
 import { productSchema } from "../validation schema/schema.js";
 
 const helper = {

@@ -1,5 +1,5 @@
 import { mongo } from "../mongo/mongo.js";
-
+import { ObjectId } from 'mongodb';
 const helper={
 //create a new order
  async postOrder(req,res) {
@@ -45,7 +45,7 @@ const helper={
  async deleteOrder(req, res) {
   try {
     const { orderid } = req.params;
-    const order = await mongo.orders.deleteOne({ _id: orderid });
+    const order = await mongo.orders.deleteOne({ _id: ObjectId(orderid) });
    res.status(200).send(order)
   }
   catch (err)
@@ -58,7 +58,7 @@ const helper={
  async updateOrder(req, res) {
   try {
     const { orderid } = req.params;
-    const updatedOrder = await mongo.orders.findOneAndUpdate({ _id: orderid },{
+    const updatedOrder = await mongo.orders.findOneAndUpdate({ _id: ObjectId(orderid) },{
       $set: req.body
     },{returnNewDocument:true})
    res.status(200).send(updatedOrder)
