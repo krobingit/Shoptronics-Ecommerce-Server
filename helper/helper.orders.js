@@ -50,12 +50,25 @@ const helper={
   }
   catch (err)
   {
-   console.log("Error getting order", err);
+   console.log("Error deleting order", err);
   res.status(500).send("Error occured")
   }
  },
-
-
+//update order for admin
+ async updateOrder(req, res) {
+  try {
+    const { orderid } = req.params;
+    const updatedOrder = await mongo.orders.findOneAndUpdate({ _id: orderid },{
+      $set: req.body
+    },{returnNewDocument:true})
+   res.status(200).send(updatedOrder)
+  }
+  catch (err)
+  {
+   console.log("Error updating order", err);
+  res.status(500).send("Error occured")
+  }
+ },
 
 
 
