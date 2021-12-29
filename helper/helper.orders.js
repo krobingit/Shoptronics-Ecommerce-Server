@@ -69,6 +69,19 @@ const helper={
   res.status(500).send("Error occured")
   }
  },
+//get an  order for admin
+ async getOrderById(req, res) {
+  try {
+    const { orderid } = req.params;
+    const Order = await mongo.orders.find({ _id: ObjectId(orderid) })
+   res.status(200).send(Order)
+  }
+  catch (err)
+  {
+   console.log("Error getting order", err);
+  res.status(500).send("Error occured")
+  }
+ },
 
 
 

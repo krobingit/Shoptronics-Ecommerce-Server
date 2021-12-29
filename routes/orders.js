@@ -16,6 +16,8 @@ router
 //delete order
 router
  .route("/:orderid")
+ .get(AuthorizeAdmin,helper.getOrderById)
+ .put(AuthorizeAdmin, helper.updateOrder)
  .delete(AuthorizeAdmin, helper.deleteOrder);
 
 export const ordersRoute = router;
