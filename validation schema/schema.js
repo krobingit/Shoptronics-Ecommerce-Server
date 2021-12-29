@@ -20,9 +20,9 @@ const productSchema=joi.object({
         price:joi.number().required(),
         image:joi.string().required(),
         description:joi.string().required(),
-    category: joi.string().required(),
-        model:joi.string().required()
-
+        category: joi.string().required(),
+        model: joi.string().required(),
+        instock:joi.boolean().default(true)
     })
 
 export {registerSchema,loginSchema,productSchema}
