@@ -1,5 +1,6 @@
 import { mongo } from "../mongo/mongo.js";
 import {ObjectId} from 'mongodb'
+import { productSchema } from "../validation schema/schema.js";
 
 const helper = {
 //getting all products
@@ -40,6 +41,19 @@ res.status(200).send(updatedData);
     catch (err)
     {
       console.log("Error in updating Product"+err);
+    }
+  },
+ async CreateProduct(req, res) {
+   try {
+     const { value, error } = productSchema.validate(req.body)
+     if(error) res.status(500).send({Error:error.details[0].message})
+      const newProduct = await mongo.products.insertOne(value);
+      console.log(newProduct)
+res.status(201).send({message:"Product Created Successfully"});
+    }
+    catch (err)
+    {
+      console.log("Error in creating new Product"+err);
     }
   },
 };

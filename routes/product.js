@@ -6,7 +6,8 @@ const router = express.Router();
 //list all products
 router
  .route("/")
- .get(helper.getAllProducts);
+ .get(helper.getAllProducts)
+ .post(AuthorizeAdmin, helper.CreateProduct);
 
 //list specific product
 router

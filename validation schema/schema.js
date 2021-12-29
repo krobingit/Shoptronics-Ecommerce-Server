@@ -14,4 +14,15 @@ email:joi.string().required(),
 
 })
 
-export {registerSchema,loginSchema}
+const productSchema=joi.object({
+        name:joi.string().required(),
+        brand:joi.string().required(),
+        price:joi.number().required(),
+        image:joi.string().required(),
+        description:joi.string().required(),
+    category: joi.string().required(),
+        model:joi.string().required()
+
+    })
+
+export {registerSchema,loginSchema,productSchema}
