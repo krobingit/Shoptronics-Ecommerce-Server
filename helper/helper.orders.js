@@ -17,8 +17,8 @@ const helper={
  //specific user's orders -accessed by an user
  async getOrder(req, res) {
   try {
-
-   const order = await mongo.orders.find({ userId: req.params.userid }).sort({createdAt:-1}).toArray();
+    const { userid } = req.params;
+   const order = await mongo.orders.find({ userId: userid }).sort({createdAt:-1}).toArray();
    res.status(200).send(order)
   }
   catch (err)
@@ -28,7 +28,7 @@ const helper={
   }
  },
 
- //fetch all orders for admin
+//fetch all orders for admin
   async getAllOrders(req, res) {
   try {
    const { recent } = req.query;
@@ -41,9 +41,22 @@ const helper={
   res.status(500).send("Error occured")
   }
  },
+//delete an order for admin
+ async deleteOrder(req, res) {
+  try {
+    const { orderid } = req.params;
+    const order = await mongo.orders.deleteOne({ _id: orderid });
+   res.status(200).send(order)
+  }
+  catch (err)
+  {
+   console.log("Error getting order", err);
+  res.status(500).send("Error occured")
+  }
+ },
 
 
-  //update an order for admin
+
 
 
 

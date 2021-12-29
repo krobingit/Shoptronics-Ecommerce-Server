@@ -8,10 +8,14 @@ router
  .post(verifyToken, helper.postOrder) //create a new order
  .get(AuthorizeAdmin, helper.getAllOrders); //to get all orders for admin
 
-
 //get a specific user their orders
 router
  .route("/:userid")
  .get(AuthorizeUser, helper.getOrder);
+
+//delete order
+router
+ .route("/:orderid")
+ .delete(AuthorizeAdmin, helper.deleteOrder);
 
 export const ordersRoute = router;
