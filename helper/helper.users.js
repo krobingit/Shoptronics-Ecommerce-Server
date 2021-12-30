@@ -41,8 +41,9 @@ async updateUser(req, res)
 
     async getUser(req, res)
     {
+        const { userid } = req.params;
         try {
-            const user = await mongo.users.find({ _id: ObjectId(req.params.userid) })
+            const user = await mongo.users.findOne({ _id: ObjectId(userid) })
             const { password, ...userdata } = user;
             res.status(200).send(userdata)
         }
