@@ -73,7 +73,7 @@ const helper={
  async getOrderById(req, res) {
   try {
     const { orderid } = req.params;
-    const Order = await mongo.orders.find({ _id: ObjectId(orderid) })
+    const Order = await mongo.orders.find({ _id: ObjectId(orderid) }).toArray();
    res.status(200).send(Order)
   }
   catch (err)
