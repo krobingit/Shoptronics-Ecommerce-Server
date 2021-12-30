@@ -11,7 +11,7 @@ router
 
 router
  .route("/:userid")
- .get(AuthorizeAdmin, helper.getUser)
+ .get(AuthorizeUser, helper.getUser)
  .put(AuthorizeUser, helper.updateUser)
  .delete(AuthorizeUser,helper.deleteUser)
 

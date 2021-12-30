@@ -4,13 +4,14 @@ import bcrypt from 'bcrypt';
 const helper = {
     //update existing user
 async updateUser(req, res)
- {
+    {
+        let { userid } = req.params;
   try {
            if(req.body.password)
             {
                 req.body.password=await bcrypt.hash(req.body.password,Number(10))
             }
-      const updatedUser = await mongo.users.findOneAndUpdate({ _id: ObjectId(req.params.userid) }, { $set: req.body }
+      const updatedUser = await mongo.users.findOneAndUpdate({ _id: ObjectId(userid) }, { $set: req.body }
           , { returnNewDocument: true })
             res.status(200).send(updatedUser)
         }
