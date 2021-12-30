@@ -15,7 +15,7 @@ router
 
 //delete order
 router
- .route("/:orderid")
+ .route("/:orderid/:userid")
  .get(AuthorizeAdmin,helper.getOrderById)
  .put(AuthorizeAdmin, helper.updateOrder)
  .delete(AuthorizeAdmin, helper.deleteOrder);
