@@ -11,8 +11,8 @@ router
 
 router
  .route("/:userid")
- .get(AuthorizeUser, helper.getUser)
- .put(AuthorizeUser, helper.updateUser)
- .delete(AuthorizeUser,helper.deleteUser)
+ .get(AuthorizeAdmin, helper.getUser)
+ .put(AuthorizeAdmin, helper.updateUser)
+ .delete(AuthorizeAdmin, helper.deleteUser);
 
 export const usersRoute = router;
