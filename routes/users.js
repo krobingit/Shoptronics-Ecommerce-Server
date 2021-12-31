@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { helper } from "../helper/helper.users.js";
-import { AuthorizeUser, verifyToken,AuthorizeAdmin } from "../helper/authorization.middleware.js";
+import { AuthorizeUser,AuthorizeAdmin } from "../helper/authorization.middleware.js";
 
 router
  .route("/")
@@ -11,8 +11,8 @@ router
 
 router
  .route("/:userid")
- .get(AuthorizeAdmin, helper.getUser)
- .put(AuthorizeAdmin, helper.updateUser)
+ .get(AuthorizeUser,helper.getUser)
+ .put(AuthorizeUser, helper.updateUser)
  .delete(AuthorizeAdmin, helper.deleteUser);
 
 export const usersRoute = router;
