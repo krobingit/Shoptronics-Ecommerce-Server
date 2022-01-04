@@ -9,7 +9,7 @@ const helper = {
     const prods = await mongo.products.find(filter).toArray();
     res.send(prods);
   },
-  //getting a specificc product
+  //getting a specific product
   async getProductById(req, res) {
     try {
       const { id } = req.params;
@@ -21,6 +21,7 @@ const helper = {
       console.log("Error:"+err);
     }
   },
+//deleting a specific product
  async deleteProductById(req, res) {
     try {
       const { id } = req.params;
@@ -32,6 +33,7 @@ const helper = {
       console.log("Error in deleting Product"+err);
     }
   },
+ //editing a specific product
  async EditProductById(req, res) {
     try {
       const { id } = req.params;

@@ -14,7 +14,7 @@ export const sendMail = async (email, subject, text) => {
   from: 'sshoptronics@gmail.com',
   to: email,
   subject: subject,
-  text:text
+  html:text
  }
 
  transporter.sendMail(mailOptions, (error, info) => {

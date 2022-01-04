@@ -1,11 +1,20 @@
 import { mongo } from "../mongo/mongo.js";
 import { ObjectId } from 'mongodb';
+import { sendMail } from "../mongo/sendMail.js";
 const helper={
 //create a new order
  async postOrder(req,res) {
   try {
+    const {
+      userId,
+      userEmail,
+      products,
+      paymentData,
+      orderStatus
+    } = req.body;
    const order = { ...req.body, createdAt: new Date() }
-   const newOrder = await mongo.orders.insertOne(order);
+    const newOrder = await mongo.orders.insertOne(order);
+    await sendMail(userEmail, "Order Confirmation", "<h1>Your order with OrderId ${paymentData.order_id} has been successfully placed.</h1>")
    res.status(201).send(newOrder);
   }
   catch (err)
