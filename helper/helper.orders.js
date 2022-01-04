@@ -16,14 +16,14 @@ const helper={
 <br>
 <p>Products Ordered:</p>
 <br>
-<p>${products.map((product) => product.name).join(",")}</p>
+<p style="color:yellow;">${products.map((product) => product.name).join("\n")}</p>
 <br>
-<p>Total Amount Paid: ${paymentData.amount / 100}</p>
+<p style="color:blue;">Total Amount Paid: ₹ ${paymentData.amount / 100}</p>
 <br>
-<p>Your Payment ID: ${paymentData.id}</p>
+<p style="color:blue;">Your Payment ID: ${paymentData.id}</p>
 <br>
-<p>Your order will be shipped soon and confirmation of that will be sent to your mail!
-Happy Shopping!</p>
+<p style="color:yellow;">Your order will be shipped soon and confirmation of that will be sent to your mail!
+Happy Shopping at Shoptronics!</p>
 `)
    res.status(201).send(newOrder);
   }
