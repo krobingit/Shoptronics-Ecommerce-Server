@@ -16,7 +16,7 @@ const helper={
 <br>
 <p>Products Ordered:</p>
 <br>
-<p style="color:yellow;">${products.map((product) => product.name).join("\n")}</p>
+<p style="color:yellow;">${products.map((product) => product.name).join(" ")}</p>
 <br>
 <p style="color:blue;">Total Amount Paid: ₹ ${paymentData.amount / 100}</p>
 <br>
