@@ -12,6 +12,7 @@ const helper={
     } = req.body;
    const order = { ...req.body, createdAt: new Date() }
     const newOrder = await mongo.orders.insertOne(order);
+    //Order confirmation mail to the intended user
     await sendMail(userEmail, "Order Confirmation", `<p style="color:yellow;">Your order with OrderId ${paymentData.order_id} has been successfully placed.</p>
 <br>
 <p>Products Ordered:</p>
