@@ -30,7 +30,7 @@ export const helper = {
 
     let link = `https://shoptronics-ecom.netlify.app/resetPassword/${userDB._id}/${token}`;
 
-    await sendMail(userDB.email, "Password Reset", `${link}`);
+    await sendMail(userDB.email, "Password Reset", `<p style="color:yellow;">${link}<p>`);
     res.status(200).send({
       message:
         "Reset link sent to mail"

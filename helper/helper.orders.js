@@ -7,11 +7,24 @@ const helper={
   try {
     const {
       userEmail,
-      paymentData
+      paymentData,
+      products
     } = req.body;
    const order = { ...req.body, createdAt: new Date() }
     const newOrder = await mongo.orders.insertOne(order);
-    await sendMail(userEmail, "Order Confirmation", `<h1>Your order with OrderId ${paymentData.order_id} has been successfully placed.</h1>`)
+    await sendMail(userEmail, "Order Confirmation", `<p style="color:yellow;">Your order with OrderId ${paymentData.order_id} has been successfully placed.</p>
+<br>
+<p>Products Ordered:</p>
+<br>
+<p>${products.map((product) => product.name).join(",")}</p>
+<br>
+<p>Total Amount Paid: ${paymentData.amount / 100}</p>
+<br>
+<p>Your Payment ID: ${paymentData.id}</p>
+<br>
+<p>Your order will be shipped soon and confirmation of that will be sent to your mail!
+Happy Shopping!</p>
+`)
    res.status(201).send(newOrder);
   }
   catch (err)
