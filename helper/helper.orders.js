@@ -6,15 +6,12 @@ const helper={
  async postOrder(req,res) {
   try {
     const {
-      userId,
       userEmail,
-      products,
-      paymentData,
-      orderStatus
+      paymentData
     } = req.body;
    const order = { ...req.body, createdAt: new Date() }
     const newOrder = await mongo.orders.insertOne(order);
-    await sendMail(userEmail, "Order Confirmation", "<h1>Your order with OrderId ${paymentData.order_id} has been successfully placed.</h1>")
+    await sendMail(userEmail, "Order Confirmation", `<h1>Your order with OrderId ${paymentData.order_id} has been successfully placed.</h1>`)
    res.status(201).send(newOrder);
   }
   catch (err)
