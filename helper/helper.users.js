@@ -13,7 +13,9 @@ async updateUser(req, res)
             }
       const updatedUser = await mongo.users.findOneAndUpdate({ _id: ObjectId(userid) }, { $set: req.body }
           , { returnNewDocument: true })
-            res.status(200).send(updatedUser)
+      const user = await mongo.users.findOne({ _id: ObjectId(userid) });
+          const { password, ...userdata } = user;
+            res.status(200).send(userdata)
         }
         catch(err)
         {
