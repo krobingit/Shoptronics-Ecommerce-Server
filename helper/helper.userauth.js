@@ -22,7 +22,7 @@ const helper = {
       const token = jwt.sign({
         userid: userDB._id,
         isAdmin: userDB.isAdmin
-         }, process.env.SECRET_KEY, { expiresIn: '1d' })
+         }, process.env.SECRET_KEY)
   //sending token
       let { password, ...details } = userDB;
        res.status(200).send({...details,token })
