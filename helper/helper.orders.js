@@ -13,17 +13,15 @@ const helper={
    const order = { ...req.body, createdAt: new Date() }
     const newOrder = await mongo.orders.insertOne(order);
     //Order confirmation mail to the intended user
-    await sendMail(userEmail, "Order Confirmation", `<p style="color:yellow;">Your order with OrderId ${paymentData.order_id} has been successfully placed.</p>
+    await sendMail(userEmail, "Order Confirmation", `<p>Your order with OrderId ${paymentData.order_id} has been successfully placed.</p>
 <br>
 <p>Products Ordered:</p>
+<p>${products.map((product) => product.name).join(" and ")}</p>
 <br>
-<p style="color:yellow;">${products.map((product) => product.name).join(" and ")}</p>
+<p>Total Amount Paid: ₹ ${paymentData.amount / 100}</p>
+<p>Your Payment ID: ${paymentData.id}</p>
 <br>
-<p style="color:blue;">Total Amount Paid: ₹ ${paymentData.amount / 100}</p>
-<br>
-<p style="color:blue;">Your Payment ID: ${paymentData.id}</p>
-<br>
-<p style="color:yellow;">Your order will be shipped soon and confirmation of that will be sent to your mail!
+<p>Your order will be shipped soon and confirmation of that will be sent to your mail!
 Happy Shopping at Shoptronics!</p>
 `)
    res.status(201).send(newOrder);
