@@ -16,9 +16,9 @@ const helper = {
       const product = await mongo.products.findOne({ _id: ObjectId(id) })
       product ? res.send(product) : res.status(404).send({ Error: "Not Found" });
     }
-    catch (err)
+    catch (error)
     {
-      console.log("Error:"+err);
+      console.log("Error:"+error);
     }
   },
 //deleting a specific product
